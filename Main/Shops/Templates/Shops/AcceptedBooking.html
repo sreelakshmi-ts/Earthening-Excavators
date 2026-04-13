@@ -1,0 +1,47 @@
+
+{% extends 'Shops/Head.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Booking List</title>
+</head>
+<body>
+    <table border="1" align="center">
+        <tr>
+            <th>Sl.No</th>
+            <th>user Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Excavator Name</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Brand</th>
+            <th>Image</th>
+            <th>Payment</th>
+        </tr>
+        {% for i in book %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.name}}</td>
+            <td>{{i.user.contact}}</td>
+            <td>{{i.user.email}}</td>
+            <td>{{i.booking_date}}</td>
+            <td>{{i.excavator.name}}</td>
+            <td>{{i.excavator.subcategory.category.name}}</td>
+            <td>{{i.excavator.subcategory}}</td>
+            <td>{{i.excavator.brandtype.brandtype}}</td>
+            <td><img src="{{i.excavator.image.url}}" alt="img" width="120px" height="120px"></td>
+            <td><a href="{% url 'webshop:payedbook'  %}">Payed List</a></td>
+            {% endfor %}
+        </tr>
+        </table>
+        </body>
+        </html>
+        {% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'Admin/Head.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Type</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <table border="1" cellpadding="10">
+            <tr> <td>ShopType</td>
+                <td><input type="text" name="txt_shoptype" id="txtshoptype" value="{{res}}" required="required" pattern="[A-Z a-z]"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="btn_submit" id="btnsubmit" value="Submit">
+                <input type="Submit" name="btn_cancel" id="btncancel" value="Cancel"></td>
+            </tr>
+         
+        </table>
+        <table border="1" align="center">
+            <tr>
+                <th>Sl.No</th>
+                <th>ShopType</th>
+                <th>Action</th>
+            </tr>
+            {% for i in shoty %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i}}</td>
+                <td><a href="{% url 'webadmin:delshoptype' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+            {% endblock content %}

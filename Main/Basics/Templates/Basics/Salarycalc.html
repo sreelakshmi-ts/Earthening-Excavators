@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="txt_frstname" id="txtfirstname"/></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="txt_lastname" id="txtfirstname"/></td>
+                </tr>
+           <tr>
+            <td>Gender</td>
+            <td><input type="radio"name="gender" id="rdo_male" value="Male">Male
+                 <input type="radio" name="gender" id="rdo_female" value="Female">Female</td>
+           </tr>
+           <td>Martial</td>
+           <td><input type="radio"name="martial" id="rdo_single" value="Single">Single
+            <input type="radio" name="martial" id="rdo_married" value="Married">Married</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td><select name="ddldepartment" id="ddldepartment"><option value="">---Select---</option>
+
+            </select></td>   
+        </tr>                                                    
+        <tr>
+            <td>Basic Salary</td>
+            <td><input type="text" name="txt_salary" id="txtsalary"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" name="btn_submit" id="btnsubmit" value="Submit">
+            <input type="submit" name="btn_reset" id="btnreset" value="Reset"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{fstna}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{ge}}</td>
+        </tr>
+        <tr>
+            <td>Martial</td>
+            <td>{{mar}}</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>{{dep}}</td>
+        </tr>
+        <tr>
+            <td>Basic Salary</td>
+            <td>{{bcs}}</td>
+        </tr>
+        <tr>
+            <td>T.A</td>
+            <td>{{ta}}</td>
+        </tr>
+        <tr>
+            <td>D.A</td>
+            <td>{{da}}</td>
+        </tr>
+        <tr>
+            <td>HRA</td>
+            <td>{{hra}}</td>
+        </tr>
+        <tr>
+            <td>LIC</td>
+            <td>{{lic}}</td>
+        </tr>
+        <tr>
+            <td>P.F</td>
+            <td>{{lic}}</td>
+        </tr>
+        <tr>
+            <td>DEDUCTION</td>
+            <td>{{ded}}</td>
+        </tr>
+        <tr>
+            <td>NET</td>
+            <td>{{net}}</td>
+        </tr>
+
+
+        </table>
+    </form>
+    </body>
+    </html>

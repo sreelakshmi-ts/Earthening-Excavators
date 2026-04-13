@@ -1,0 +1,177 @@
+{% load static %}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap.min.css' %}" />
+<!-- themefy CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/themefy_icon/themify-icons.css' %}" />
+<!-- swiper slider CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/swiper_slider/css/swiper.min.css' %}" />
+<!-- select2 CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/select2/css/select2.min.css' %}" />
+<!-- select2 CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/niceselect/css/nice-select.css' %}" />
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/owl_carousel/css/owl.carousel.css' %}" />
+<!-- gijgo css -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/gijgo/gijgo.min.css' %}" />
+<link rel="stylesheet" href="{% static 'form.css' %}" />
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/font_awesome/css/all.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/vendors/tagsinput/tagsinput.css' %}" />
+<!-- datatable CSS -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/datatable/css/jquery.dataTables.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/vendors/datatable/css/responsive.dataTables.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/vendors/datatable/css/buttons.dataTables.min.css' %}" />
+<!-- text editor css -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/text_editor/summernote-bs4.css' %}" />
+<!-- morris css -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/morris/morris.css' %}">
+<!-- metarial icon css -->
+<link rel="stylesheet" href="{% static 'Admin/vendors/material_icon/material-icons.css' %}" />
+
+<!-- menu css  -->
+<link rel="stylesheet" href="{% static 'Admin/css/metisMenu.css' %}">
+<!-- style CSS -->
+<link rel="stylesheet" href="{% static 'Admin/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/colors/default.css' %}" id="colorSkinCSS">
+
+
+<nav class="sidebar">
+    <div class="logo d-flex justify-content-between">
+        <a href="#"><h2 align="center">Welcome<br>Admin</h2></a>
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
+        </div>
+    </div>
+    <ul id="sidebar_menu">
+        <li class="side_menu_title">
+            <span >Dashboard</span>
+        </li>
+        <li class="">
+            <a  class="has-arrow" href="{% url 'webadmin:dis' %}" >
+                <span>District</span>
+            </a>
+        </li>
+        <li class="">
+            <a  class="has-arrow" href="{% url 'webadmin:pla' %}" >
+                <span>Place</span>
+            </a>
+        </li>
+        <li class="">
+            <a  class="has-arrow" href="{% url 'webadmin:cat' %}" >
+                <span>Category</span>
+            </a>
+        </li>
+        <li class="">
+            <a  class="has-arrow" href="{% url 'webadmin:subcat' %}" >
+                <span>Feedback</span>
+            </a>
+        </li>
+        
+       
+        <li class="">
+            <a  class="has-arrow" href="{% url 'webadmin:shoptype' %}" >
+                <span>ShopType</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:complainttype' %}">
+             <span>ComplaintType</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow"href="{% url 'webadmin:brand'%}">
+              <span>Brand</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:compview' %}">
+                <span>Complaint View</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:feedbackview' %}">
+                <span>Feedback View</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:verify' %}">
+                <span>Verify Shop</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:accepted' %}">
+                <span>AcceptedShop List</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="has-arrow" href="{% url 'webadmin:rejected' %}">
+                <span>RejectedShop List</span>
+            </a>
+        </li>
+        
+        <li class="">
+            <a class="has-arrow" href="{%url 'webadmin:logout' %}">
+                <span>LogOut</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div id="tab" align="center">
+    
+    {% block content %}
+  
+    {% endblock content %}
+  </div>
+
+         <!-- jquery slim -->
+         <script src="{% static 'Admin/js/jquery-3.4.1.min.js' %}"></script>
+         <!-- popper js -->
+         <script src="{% static 'Admin/js/popper.min.js' %}"></script>
+         <!-- bootstarp js -->
+         <script src="{% static 'Admin/js/bootstrap.min.js' %}"></script>
+         <!-- sidebar menu  -->
+         <script src="{% static 'Admin/js/metisMenu.js' %}"></script>
+         <!-- waypoints js -->
+         <script src="{% static 'Admin/vendors/count_up/jquery.waypoints.min.js' %}"></script>
+         <!-- waypoints js -->
+         <script src="{% static 'Admin/vendors/chartlist/Chart.min.js' %}"></script>
+         <!-- counterup js -->
+         <script src="{% static 'Admin/vendors/count_up/jquery.counterup.min.js' %}"></script>
+         <!-- swiper slider js -->
+         <script src="{% static 'Admin/vendors/swiper_slider/js/swiper.min.js' %}"></script>
+         <!-- nice select -->
+         <script src="{% static 'Admin/vendors/niceselect/js/jquery.nice-select.min.js' %}"></script>
+         <!-- owl carousel -->
+         <script src="{% static 'Admin/vendors/owl_carousel/js/owl.carousel.min.js' %}"></script>
+         <!-- gijgo css -->
+         <script src="{% static 'Admin/vendors/gijgo/gijgo.min.js' %}"></script>
+         <!-- responsive table -->
+         <script src="{% static 'Admin/vendors/datatable/js/jquery.dataTables.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/dataTables.responsive.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/dataTables.buttons.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/buttons.flash.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/jszip.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/pdfmake.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/vfs_fonts.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/buttons.html5.min.js' %}"></script>
+         <script src="{% static 'Admin/vendors/datatable/js/buttons.print.min.js' %}"></script>
+ 
+         <script src="{% static 'Admin/js/chart.min.js' %}"></script>
+         <!-- progressbar js -->
+         <script src="{% static 'Admin/vendors/progressbar/jquery.barfiller.js' %}"></script>
+         <!-- tag input -->
+         <script src="{% static 'Admin/vendors/tagsinput/tagsinput.js' %}"></script>
+         <!-- text editor js -->
+         <script src="{% static 'Admin/vendors/text_editor/summernote-bs4.js' %}"></script>
+ 
+         <script src="{% static 'Admin/vendors/apex_chart/apexcharts.js' %}"></script>
+ 
+         <!-- custom js -->
+         <script src="{% static 'Admin/js/custom.js' %}"></script>
+ 
+         <script src="{% static 'Admin/vendors/apex_chart/bar_active_1.js' %}"></script>
+         <script src="{% static 'Admin/vendors/apex_chart/apex_chart_list.js' %}"></script>

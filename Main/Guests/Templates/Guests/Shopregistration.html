@@ -1,0 +1,93 @@
+{% extends 'Guests/Head.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Registration</title>
+</head>
+<body>
+    <div id="tab" align="center">
+<br /><br /><br /><br />
+       
+    <form method="post" id="ShopForm" enctype="multipart/form-data" data-place-url="{% url 'webguest:Ajax-place'%}">
+        {% csrf_token %}
+        <h4>Shop Registration</h4>
+        
+        <table border="1" cellpadding="10" align="center">
+            <tr>
+                <td> Shop Name</td>
+                <td><input type="text" name="txt_name" id="txt_name"  required="required" autocomplete="off" title="Name Allows Only Alphaets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z]*$"></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="text" name="txt_email" id="txtemail" required="required" autocomplete="off"></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" name="txt_contact" id="txtcontact" required="required" autocomplete="off" pattern="[1-9]{1}[0-9]{9}" title="Phone number with 1-9 and remaining 9 digit with 0-9"></td>
+            </tr>
+            <tr>
+                <td> Shop Address</td>
+                <td><input type="text" name="txt_address" id="txtaddress" required="required"></td>
+            </tr>
+            <tr>
+                <td>District</td>
+                <td><select name="ddldistrict" id="ddldistrict">
+                    <option value="">---Select---</option>
+                    {% for i in dis %}
+                    <option value="{{i.id}}">{{i}}</option>
+                    {% endfor %}
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td><select name="ddlplace" id="ddlplace">
+                    <option value="">---Select---</option>
+                   
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Shop Photo</td>
+                <td><input type="file" name="file_photo" id="filephoto" required="required"></td>
+            </tr>
+            <tr>
+                <td>Shop Proof</td>
+                <td><input type="file" name="file_proof" id="fileproof" required="required"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="txt_password" id="txtpassword" required="required"   autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> </td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" name="txt_conpassword" id="txtconpassword" required="required" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="btn_save" id="btnsave" value="Save">
+                <input type="submit" name="btn_cancel" id="btncancel" value="Cancel"></td>
+            </tr>
+            </table>
+            </form>
+            </div>
+            </body>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script>
+                $("#ddldistrict").change(function () {
+                    var did = $(this).val();
+                    var ur = $("#ShopForm").attr("data-place-url");
+                    $.ajax({
+                        url: ur,
+                        data: { disd: did, },
+                        success: function (data) {
+                            $("#ddlplace").html(data);
+                        },
+                    });
+                });
+            </script>
+            </html>
+            {% endblock content %}

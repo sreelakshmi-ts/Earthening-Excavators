@@ -1,0 +1,48 @@
+{% extends 'Users/Head.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Users Operator Request</title>
+</head>
+<body>
+    <h4>My Operator Request</h4>
+    <table border="1" align="center">
+        <tr>
+            <th>Sl.No</th>
+            <th>Operator Name</th>
+            <th>Operator Contact</th>
+            <th>Excavator Name</th>
+            <th>Request Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.operator.name}}</td>
+            <td>{{i.operator.contact}}</td>
+            <td>{{i.request.rent.excavator.name}}</td>
+            <td>{{i.request.request_date}}</td>
+            <td>
+                {% if i.assign_vsts == 1 %}
+                <p>Request Accepted</p>
+                {% elif i.assign_vsts == 2 %}
+                <p>Request Rejected</p>
+                {% else %}
+                <p>Pending...</p>
+                {% endif %}
+            </td>
+            <td><a href="{% url 'webuser:cancelrequest' i.id %}">Cancel Operator Request</a></td>
+        </tr>
+            {% endfor %}
+            </td>
+            
+        </table>
+        </body>
+        </html>
+        {% endblock content %}

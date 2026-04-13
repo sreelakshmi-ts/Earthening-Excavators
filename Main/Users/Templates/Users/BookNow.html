@@ -1,0 +1,33 @@
+{% extends 'Users/Head.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4>Book Now</h4>
+    <table  border="1" cellpadding="10" align="center">
+   <tr>
+    <td>Excavator name</td>
+    <td><input type="text" name="txt_name" id="txtname" value="{{Data.name}}"></td>
+   </tr>
+   <tr>
+    <td>Rate</td>
+    <td><input type="text" name="txt_rate" id="txtrate" value="{{Data.price}}"></td>
+   </tr>
+   <tr>
+    <td colspan="2" ><input type="submit" name="btn_book" id="btn book" value="BOOK NOW">
+    <input type="submit" name="btn_cancel" id="btncancel" value="CANCEL"></td>
+</tr>
+   </table>
+</form>
+</body>
+</html>
+{% endblock content %}

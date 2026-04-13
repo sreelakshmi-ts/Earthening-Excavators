@@ -1,0 +1,101 @@
+{% extends 'Admin/Head.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+</head>
+<body>
+    <section class="main_content dashboard_part">
+        <!-- menu  -->
+       
+        <!--/ menu  -->
+        <div class="main_content_iner ">
+            <div class="container-fluid p-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="single_element">
+                            <div class="quick_activity">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="quick_activity_wrap">
+                                            <div class="single_quick_activity d-flex">
+                                                <div class="icon">
+                                                    <img src="{% static 'shop.png'%}" alt="">
+                                                </div>
+                                                <div class="count_content">
+                                                    <h3><span class="counter">{{shopcount}}</span> </h3>
+                                                    <p>Shops</p>
+                                                </div>
+                                            </div>
+                                            <div class="single_quick_activity d-flex">
+                                                <div class="icon">
+                                                    <img src="{% static 'user.png'%}" alt="">
+                                                </div>
+                                                <div class="count_content">
+                                                    <h3><span class="counter">{{usercount}}</span> </h3>
+                                                    <p>Users</p>
+                                                </div>
+                                            </div>
+                                            <div class="single_quick_activity d-flex">
+                                                <div class="icon">
+                                                    <img src="{% static 'operator.png'%}" alt="">
+                                                </div>
+                                                <div class="count_content">
+                                                    <h3><span class="counter">{{operatorcount}}</span> </h3>
+                                                    <p>Operators</p>
+                                                </div>
+                                            </div>
+                                            <div class="single_quick_activity d-flex">
+                                                <div class="icon">
+                                                    <img src="{% static 'booking.png'%}" alt="">
+                                                </div>
+                                                <div class="count_content">
+                                                    <h3><span class="counter">{{bookingcount}}</span> </h3>
+                                                    <p>Total Bookings</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12">
+                        <div class="white_box card_height_100">
+                            <div class="box_header border_bottom_1px  ">
+                                <div class="main-title">
+                                    <h3 class="mb_25">Shop List</h3>
+                                </div>
+                            </div>
+                            <div class="staf_list_wrapper sraf_active owl-carousel">
+                                {% for i in data %}
+                                <!-- single carousel  -->
+                                <div class="single_staf">
+                                    <div class="staf_thumb">
+                                        <img src="{{i.photo.url}}" alt="">
+                                    </div>
+                                    <h4>{{i.name}}</h4>
+                                    <p>{{i.contact}}</p>
+                                </div>
+                                {% endfor %}
+                                <!-- single carousel  -->
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    </body>
+    </html>
+    {% endblock content %}

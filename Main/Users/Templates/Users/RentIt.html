@@ -1,0 +1,59 @@
+{% extends 'Users/Head.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent It</title>
+    <script>
+        function GrandTotal()
+        {
+            var rate=document.getElementById("txtrate").value;
+            var qn=document.getElementById("txtquantity").value;
+            var days=document.getElementById("txtdate").value;
+            var tot=parseInt(rate)*parseInt(qn)*parseInt(days)
+            document.getElementById("txtamount").value=tot;
+        }
+    </script>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4>Rent It</h4>
+    <table  border="1" cellpadding="10" align="center">
+   <tr>
+    <td>Rate Per Day </td>
+    <td><input type="text" name="txt_rate" id="txtrate" value="{{Data.price}}"></td>
+   </tr>
+   <tr>
+    <td>Quantity</td>
+    <td><input type="number" name="txt_quantity" id="txtquantity" required="required" max="5">
+    <p>Maximum 5 Quantity Will Book For Rent</p></td>
+   </tr>
+   <tr>
+    <td>Days</td>
+    <td><input type="text" name="txt_date" id="txtdate" onchange="GrandTotal()"></td>
+   </tr>
+   <tr>
+    <td>From Date</td>
+    <td><input type="date" name="txt_fromdate" id="txtfromedate" ></td>
+   </tr>
+   <tr>
+    <td>Amount</td>
+    <td><input type="text" name="txt_amount" id="txtamount" ></td>
+   </tr>
+   <tr>
+    <td colspan="2" ><input type="submit" name="btn_confirm" id="btnconfirm" value="CONFIRM">
+    <input type="submit" name="btn_cancel" id="btncancel" value="CANCEL"></td>
+</tr>
+<tr>
+    <td colspan="=2"><a href="{% url 'webuser:operatorreq' %}">NEED AN OPERATOR...?</a></td>
+</tr>
+   </table>
+</form>
+</body>
+</html>
+{% endblock content %}

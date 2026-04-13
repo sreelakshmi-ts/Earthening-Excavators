@@ -1,0 +1,71 @@
+{% extends 'Users/Head.html'%}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Rentings</title>
+</head>
+<body>
+    <h4>My Renting</h4>
+    <table border="1" align="center">
+        <tr>
+            <th>Sl.No</th>
+            <th>Coustomer Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>From Date</th>
+            <th>Date</th>
+            <th>No.of Excavator</th>
+            <th>Renting Days</th>
+            <td>Total Amount</td>
+            <th>Excavator Name</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Brand</th>
+            <th>Image</th>
+            <th>Status</th>
+            
+        </tr>
+        {% for i in rent %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.name}}</td>
+            <td>{{i.user.contact}}</td>
+            <td>{{i.user.email}}</td>
+            <td>{{i.from_date}}</td>
+            <td>{{i.renting_date}}</td>
+            <td>{{i.quantity}}</td>
+            <td>{{i.days}}</td>
+            <td>{{i.amount}}</td>
+            <td>{{i.excavator.name}}</td>
+            <td>{{i.excavator.subcategory.category.name}}</td>
+            <td>{{i.excavator.subcategory}}</td>
+            <td>{{i.excavator.brandtype.brandtype}}</td>
+            <td><img src="{{i.excavator.image.url}}" alt="img" width="120px" height="120px"></td>
+            <td> 
+                {% if i.rent_vsts == 1 %}
+                <p>Renting Accepted/<a href="{% url 'webuser:rentpayment' i.id %}">Rs.{{i.excavator.price|mul:.25}}Pay Now</a></p>
+                {% elif i.rent_vsts == 2 %}
+                <p>Renting Rejected</p>
+                {% elif i.rent_vsts == 3 %}
+                <p>Renting Cancelled</p>
+                {% elif i.rent_vsts == 4 %}
+                <p>Payed Successfully</p>
+                {% else %}
+                <p>Pending.../<a href="{% url 'webuser:cancelrenting' i.id %}">Cancel Renting</a></p>
+                {% endif %}
+            </td>
+            
+            
+            {% endfor %}
+            
+        </tr>
+        </table>
+        </body>
+        </html>
+        {% endblock content %}

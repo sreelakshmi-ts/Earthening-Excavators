@@ -1,0 +1,45 @@
+<div id="data">
+    <table align="center" cellpadding="50" style="border-collapse: collapse">
+        <tr>
+            {% for i in EXC %}
+
+            <td>
+                <div style="text-align:center;border:1px solid black;margin:22px;padding:20px">
+
+                    <p><img src="{{i.image.url}}" alt="img" width="120px" height="120px"></p>
+                    <br>
+                    <p><a href="{% url 'webuser:viewgallery' i.id %}">images</a></p>
+                    <br>
+                    <p>{{i.name}}</p>
+                    <br>
+                    <p>{{i.category}}</p>
+                    <br>
+                    <p>{{i.subcategory}}</p>
+                    <br>
+                    <p>{{i.details}}</p>
+                    <br>
+                    <p>{{i.price}}</p>
+                    <br>
+                    <p>{{i.shoptype}}</p>
+                    <br>
+                    <p>{{i.shop.name}}</p>
+                    <br>
+                    {% if i.shoptype.id == 2 %}
+                        <p><a href="{% url 'webuser:bookit' i.id%}">Book Now</a></p>
+                        {% else %}
+                        <p><a href="{% url 'webuser:rentit' i.id %}">Rent Now</a></p>
+                        {% endif %}
+                    
+
+                </div>
+            </td>
+            {% if forloop.counter|divisibleby:4 %}
+        </tr>
+        <tr>
+            {% endif %}
+
+
+            {% endfor %}
+    </table>
+    <br><br><br>
+</div>

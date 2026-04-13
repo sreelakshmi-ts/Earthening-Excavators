@@ -1,0 +1,125 @@
+{% extends 'Shops/Head.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Excavator</title>
+</head>
+
+<body>
+    <form method="post" id="ExcavatorForm" enctype="multipart/form-data"
+        data-subcategory-url="{% url 'webshop:Ajax-subcategory'%}">
+        {% csrf_token %}
+        <table border="1" cellpadding="10">
+            <tr>
+                <td> Name</td>
+                <td><input type="text" name="txt_name" id="txt_name" required="required"></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><select name="ddlcategory" id="ddlcategory">
+                        <option value="">---Select---</option>
+                        {% for i in cat %}
+                        <option value="{{i.id}}">{{i}}</option>
+                        {% endfor %}
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Subcategory</td>
+                <td><select name="ddlsubcategory" id="ddlsubcategory">
+                        <option value="">---Select---</option>
+
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Brand</td>
+                <td><select name="ddlbrand" id="ddlbrand">
+                    <option value="">---Select---</option>
+                    {% for i in brandty %}
+                    <option value="{{i.id}}">{{i}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Details</td>
+                <td><input type="textarea" name="txt_details" id="txtdetaila" required="required"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="number" name="txt_price" id="txtprice" required="required" pattern="[0-9]"></td>
+            </tr>
+            <td>Type</td>
+            <td><select name="ddltype" id="ddltype">
+                    <option value="">---Select---</option>
+                    {% for i in shoty %}
+                    <option value="{{i.id}}">{{i}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file_photo" id="filephoto" required="required"></td>
+            </tr>
+            <tr>
+
+
+            <tr>
+                <td><input type="submit" name="btn_save" id="btnsave" value="Save">
+                    <input type="submit" name="btn_cancel" id="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+
+        <table border="1" align="center">
+            <tr>
+                <th>SI. No.</th>
+                <th>Name</th>
+                <th>Subcategory</th>
+                <th>Details</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            {% for i in excavator %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.subcategory}}</td>
+                <td>{{i.details}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.shoptype}}</td>
+                <td><img src="{{i.image.url}}" alt="img" width="120px" height="120px"></td>
+                <td><a href="{% url 'webshop:delexcavator' i.id %}">Remove</a> | <a href="{% url 'webshop:gallery' i.id %}">ADD Image</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+
+</html>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#ddlcategory").change(function () {
+        var did = $(this).val();
+        var ur = $("#ExcavatorForm").attr("data-subcategory-url");
+        $.ajax({
+            url: ur,
+            data: { categ: did, },
+            success: function (data) {
+                $("#ddlsubcategory").html(data);
+            },
+        });
+    });
+</script>
+
+{% endblock content %}

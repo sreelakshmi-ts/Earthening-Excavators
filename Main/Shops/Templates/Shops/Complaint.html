@@ -1,0 +1,61 @@
+{% extends 'Shops/Head.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Complaint</title>
+</head>
+<body>
+    <form method="post">
+      {% csrf_token %}
+        <table  border="1" cellpadding="10" align="center">
+            <tr>
+                <td>Complaint Type</td>
+                <td><select name="ddlcomplaint" id="ddlcomplaint">
+                    <option value="">---Select---</option>
+                    {% for i in complaintyp %}
+                    <option value="{{i.id}}">{{i}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Complaint</td>
+                <td><textarea name="txt_complaint" id="txtcomplaint" cols="45" rows="5" required="required"></textarea></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="submit" name="btn_submit" id="btnsubmit" value="Submit">
+                <input type="submit" name="btn_cancel" id="btncancel" value="Cancel"></td>
+            </tr>
+            </table>
+            <br><br><br><br><br>
+            <table border="1" align="center">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Complaint Type</th>
+                    <th>Complaint</th>
+                    <th>Complaint Date</th>
+                    <th>Replay</th>
+                    </tr>
+                    {% for i in comp %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.complainttype}}</td>
+                    <td>{{i.complaint_details}}</td>
+                    <td>{{i.complaint_date}}</td>
+                    <td>{{i.complaint_replay}}</td>
+                    {% endfor %}
+                </tr>
+                </table>
+                </form>
+                </body>
+                </html>
+                {% endblock content %}
+                
